@@ -5,12 +5,22 @@ use super::{
 
 #[derive(Debug)]
 pub struct Sequence<'a> {
-    varieties: Vec<&'a InDays<'a, Variety>>,
+    varieties: Vec<InDays<'a, Variety>>,
 }
 
 impl<'a> Sequence<'a> {
-    pub fn new(varieties: Vec<&'a InDays<'a, Variety>>) -> Sequence {
+    pub fn new(
+        varieties: Vec<InDays<'a, Variety>>
+    ) -> Sequence {
         Sequence { varieties }
+    }
+
+    pub fn duration(&self) -> u32 {
+        self.varieties
+            .iter()
+            .map(|i| i.0 + i.1.days_in_ground)
+            .max()
+            .unwrap_or(1)
     }
 }
 
@@ -20,7 +30,6 @@ mod tests {
 
     #[test]
     fn instantiates() {
-        let v = Sequence::new(vec![]);
-        assert_eq!(v, v)
+        Sequence::new(vec![]);
     }
 }

@@ -5,7 +5,10 @@ use super::{
     yearly_sequence::YearlySequence,
 };
 
-type PlotPlans<'a> = HashMap<Plot, &'a YearlySequence<'a>>;
+pub type PlotPlans<'a> = HashMap<
+    Plot,
+    YearlySequence<'a>
+>;
 
 #[derive(Debug)]
 pub struct YearlyPlan<'a> {

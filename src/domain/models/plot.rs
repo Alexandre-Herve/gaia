@@ -1,4 +1,9 @@
-#[derive(Debug, Hash)]
+#[derive(
+    Debug,
+    Eq,
+    Hash,
+    PartialEq
+)]
 pub struct Plot {
     id: String,
     name: String,
@@ -9,11 +14,3 @@ impl Plot {
         Plot { id, name }
     }
 }
-
-impl PartialEq for Plot {
-    fn eq(&self, other: &Self) -> bool {
-        self.id == other.id
-    }
-}
-
-impl Eq for Plot {}
